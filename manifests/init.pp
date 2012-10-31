@@ -13,6 +13,12 @@ class hubot (
   $campfire_rooms   = undef,
   $campfire_token   = undef,
   $environment      = undef,
+  $hipchat_jid      = undef,
+  $hipchat_pass     = undef,
+  $hipchat_token    = undef,
+  $hipchat_name     = undef,
+  $hipchat_rooms    = undef
+  
 ) inherits hubot::params {
   include stdlib
 
@@ -35,6 +41,11 @@ class hubot (
     campfire_token   => $campfire_token,
     vagrant_hubot    => $vagrant_hubot,
     environment      => $environment,
+    hipchat_jid      => $hipchat_jid,
+    hipchat_pass     => $hipchat_pass,
+    hipchat_token    => $hipchat_token,
+    hipchat_name     => $hipchat_name,
+    hipchat_rooms    => $hipchat_rooms,
   }
   ~> class { 'hubot::service': }
   -> anchor { 'hubot::end': }

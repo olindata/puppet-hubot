@@ -17,6 +17,8 @@
   "dependencies": {
     <% if adapter == 'irc' -%>
     "hubot-irc": "0.1.0",
+    <% elsif adapter == 'hipchat' -%>
+    "hubot-hipchat": ">= 1.0.2",
     <% end -%>
     "hubot": "2.3.2",
     "coffee-script": "1.3.3",

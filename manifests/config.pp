@@ -11,7 +11,12 @@ class hubot::config (
   $campfire_rooms = undef,
   $campfire_token = undef,
   $vagrant_hubot,
-  $environment = undef
+  $environment = undef,
+  $hipchat_jid      = undef,
+  $hipchat_pass     = undef,
+  $hipchat_token    = undef,
+  $hipchat_name     = undef,
+  $hipchat_rooms    = undef
 ) inherits hubot::params {
 
   # Sanity check config
@@ -25,6 +30,11 @@ class hubot::config (
         if (!defined($campfire_account)) and ($campfire_rooms[0] == '') and (!defined($campfire_token)) {
             fail("Required Options missing: $adapter requires options: campfire_account, campfire_rooms, campfire_token")
 	}
+    }
+    hipchat: {
+        if (!defined($hipchat_jid)) and (!defined($hipchat_token)) and ($hipchat_rooms[0] == '') {
+            fail("Required Options missing: $adapter requires options hipchat_jid, hipchat_token, hipchat_rooms")
+        }
     }
     default:  {
       fail("Unsupported Adapter: ${adapter}. Supported Adpaters: irc|campfire")
